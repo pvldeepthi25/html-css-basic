@@ -1,0 +1,41 @@
+.my-table {
+	border-collapse: collapse;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.my-table thead {
+	position: sticky;
+	top: 0;
+}
+
+.my-table tr {
+	background-color: #ffffff;
+	color: #000;
+}
+
+.my-table th {
+	padding: 10px 10px;
+	border: solid 1px #ddd;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+}
+tbody tr:nth-child(odd) {
+  background-color: #8b939a;
+  color: #fff;
+}
+.my-table td {
+	border: solid 1px #ECECEC;
+	font-size: 13px;
+	padding: 10px 10px;
+	text-align: center;
+}
+
+.my-table thead>tr {
+	background-color: #948a5d;
+}
+
+.my-table>tbody>tr:hover {
+	background-color: #948a5d;
+}

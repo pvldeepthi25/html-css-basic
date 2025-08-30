@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json Table Demo</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="grid_search.js"></script>
+<link rel="stylesheet" href="grid_search.css"/>
+</head>
+<body>
+    <div class="search-table row" >  
+         <div class="col-sm-4" style="text-align: right;margin-top: 30px;margin-bottom: 30px;">Search In a Table:</div>
+         <div class="col-sm-4" style="margin-top: 30px;margin-bottom: 30px;"> <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for Your choice"></div>  
+    </div> 
+  <div id="preview-table"></div>  
+<script>
+        // Example usage:
+        // sample JSON data
+        const users = [
+        { "name": "Rony", "branch": 'CSC', "gendor": "F",'room info':'SANGAM-5F-18B' },
+        { "name": "Anne", "branch": 'ECE', "gendor": "F" ,'room info':'SANGAM-5F-10C'},
+        { "name": "Mike", "branch": 'EEE', "gendor": "M" ,'room info':'5F-10'},
+        { "name": "Kohli", "branch": 'MEC', "gendor": "M" ,'room info':'5F-11'},
+        { "name": "Dhoni", "branch": 'MEC', "gendor": "M" ,'room info':'5F-12'},
+        { "name": "Bumra", "branch": 'Civil', "gendor": "M" ,'room info':'4F-1'},
+        { "name": "Priya", "branch": 'ECE', "gendor": "F" ,'room info':'SANGAM-6F-10C'},
+        { "name": "Tamanna", "branch": 'CSC', "gendor": "F" ,'room info':'SANGAM-6F-10C'}
+        ];
+
+       const table = jsonToHtmlTable(users);
+     document.getElementById("preview-table").innerHTML = table;
+
+
+function searchFunction() {
+    console.log('searchFunction');
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("my-table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+         for(j=0;j<4;j++){
+            td = tr[i].getElementsByTagName("td")[j];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                break;
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
+            
+        }       
+  }
+}
+
+ </script>
+
+</body>
+</html>
