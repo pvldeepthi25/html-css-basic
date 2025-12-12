@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<style>
+    
+.menubar {
+    width: 100%;
+    height: 60px;
+    vertical-align: middle;
+    background: linear-gradient(to bottom, #3a5170 0%, #3a5170 24%, #1d2e47 100%);
+    border-bottom: 1px solid #f5f5f5;
+    position: fixed;
+    top: 0;
+    -webkit-user-select: all;
+    user-select: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    position: absolute;
+}
+
+.nav {
+    display: flex;
+    font-size: 18px;
+    flex-direction: row;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.nav li {
+    margin: 0 1px;
+    background-color: #2aafbe;
+    border-radius: 10px;
+    height: 40px;
+    padding-top: 12px;
+
+}
+.nav li a{
+    text-decoration: none;
+    color: white;
+    margin: 0px 5px 0px 5px;
+    height: 30px;
+    font-weight: 600;
+}
+
+.nav li:hover{
+   background-color: #d34747;
+   text-decoration: underline;
+   border-radius: 3px;
+}
+
+
+
+.hamburger {
+    margin: 0 13px 0 auto;
+    height: inherit;
+}
+
+@media screen and (min-width: 801px) {
+    .nav {
+        display: flex !important;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+        text-align: center;
+    }
+}
+
+.mobile {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    background-color: #8aa8e9;
+}
+</style>
+<body>
+<div class="menubar">
+   <img src="www_11526685.jpg" height="60px" width="50px">
+    <ul class="nav" id="nav">
+        <li><a href="sampleForm.html">Login</a></li>
+        <li><a href="grid_search.html">Table</a></li>
+        <li><a href="">ContactUS</a></li>
+        <li><a href="">ABOUTUS</a></li>
+    </ul>
+
+    <input type="image" class="hamburger" onclick="openMenu()"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/800px-Hamburger_icon.svg.png" />
+</div>
+
+<script>
+const menu = document.getElementById("nav");
+let open;
+
+function openMenu() {
+    if (open) {
+        menu.style.display = "none";
+        open = false;
+    } else if (!open) {
+        menu.style.display = "block";
+        open = true;
+    }
+}
+
+window.addEventListener('resize', setMobileClass);
+window.addEventListener('load', setMobileClass);
+
+function setMobileClass() {
+    if (window.innerWidth <= 800) {
+        menu.classList.add('mobile');
+    } else {
+        menu.classList.remove('mobile');
+    }
+};
+</script>
