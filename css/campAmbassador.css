@@ -6,8 +6,9 @@
     margin-top:10px ;
 
 }
-html, body{
-  height: 100%;
+.campAmbcontainer{
+  height: 600px;
+   width: 1330px;
   margin: 0;
    background-image: linear-gradient(to  right, rgb(25, 4, 73), rgb(151, 47, 221));
 }

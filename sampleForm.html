@@ -44,7 +44,10 @@
   <script>
      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 $(document).ready(function(){
+
     $(".loginbuttonsubmit").click(function(){
+    //var email=document.getElementById("email").value;
+    debugger
       var email = $('#email').val();
         if(!emailRegex.test(email)){
           alert("Enter proper email");
@@ -55,8 +58,24 @@ $(document).ready(function(){
             alert('You must agree to the terms first.');
             return false;
         } 
-        this.form.submit();
+         var imgPath = $('#imgPath').val();
+        if(!imgPath){
+          alert("Enter proper image path.");
+           return false;
+        }
+        const container = document.getElementById("imageContainer");
+        const imgElement = document.createElement("img");
+
+        imgElement.src = imgPath; // Replace with your image path or URL
+        imgElement.title = "My Name is "+email; // For accessibility
+        imgElement.width = 300; // Set a specific width
+
+          // 4. Append the image element to the div
+          container.appendChild(imgElement);
+          //this.form.submit();
     });
+
+
 });
   </script>
 </head>
@@ -81,7 +100,11 @@ $(document).ready(function(){
           <div class="col-sm-2" style="text-align: right;padding: 0;"> Email:</div>
           <div class="col-sm-4"> <input type="email" class="form-control" id="email" placeholder="Enter email" name="myemail"></div>
         </div>
-         
+         <div class="row">
+          <div class="col-sm-2" style="text-align: right;padding: 0;"> Image path:</div>
+          <div class="col-sm-4"> <input type="text" class="form-control" id="imgPath" placeholder="Copy image path" name="imgPath"></div>
+        </div>
+        
          <div class="row" style="margin-top: 20px;">
           <div class="col-sm-2"></div>
           <div class="col-sm-6">
@@ -94,7 +117,12 @@ $(document).ready(function(){
             <button type="button" class="btn btn-default loginbuttonsubmit">Submit</button>
             </div>
          </div>
-          <div class="row" style="height: 5%;"><div class="col-sm-2"></div></div>
+          <div class="row" >
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 imageContainer" id="imageContainer">
+
+            </div></div>
+
       </form>
     </div>
 </div>

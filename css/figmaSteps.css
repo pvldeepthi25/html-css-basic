@@ -1,7 +1,7 @@
 .vertical-line {
   border-right: 3px solid #aa9edb; 
   width: 110px;  
-  
+  margin-bottom: 30px;
 }
 .stepSpan {
   border-radius: 10px;
@@ -22,8 +22,9 @@
    margin-bottom: 13px;
    display: block;
 }
-html, body{
-  height: 100%;
-  margin: 0;
+.figmastepsContainer{
+  height: 500px;
+  width: 1340px;
+  padding-bottom: 40px;
    background-image: linear-gradient(to bottom right, rgb(251, 248, 253), rgb(216, 190, 233));
 }
