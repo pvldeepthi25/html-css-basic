@@ -1,0 +1,37 @@
+.bg{
+    background-color: rgb(177, 216, 216);
+}
+.heading{
+    color: rgb(140, 0, 255);
+     margin-left: -20px;
+}
+#sideHead{
+    color: rgb(226, 43, 89);
+     margin-left: 30px;
+     margin-top: 20px;
+}
+.buttonCommon{
+    color: white;
+    background-color: rgb(23, 13, 82);
+}
+
+.buttonCommon:hover{
+    color:  rgb(23, 13, 82);
+    background-color: white;
+}
+
+#playerValue{
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+#choice{
+    color: rgb(90, 36, 177);
+     
+}
+.forReset{
+    color: rgb(32, 9, 68);
+     margin-top: 60px;
+     margin-left: 35px;
+}

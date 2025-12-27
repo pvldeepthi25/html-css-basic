@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="RockPaperScissors.css">
+
+    <body class="bg">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h1 class="heading">Rock Paper Scissor</h1>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <label >Player Score</label>
+                <input type="text" id="playerpt" value="" readonly>
+            </div>
+            <div class="col-sm-3"></div>   
+            <div class="col-sm-2">
+                 <label  >Computer Score</label>
+                 <input type="text" id="computerpt" value="" readonly>
+            </div> 
+            <div class="col-sm-2"></div>
+                       
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h3 id="sideHead">Click on your choice</h3>
+            </div>
+          </div>
+         
+          <div class="row" id="playerValue">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2">
+                <button class="buttonCommon"  id="btn1" onclick="myFunction(event)">Rock</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="buttonCommon" id="btn2" onclick="myFunction(event)">Paper</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="buttonCommon" id="btn3" onclick="myFunction(event)">Scissor</button>
+            </div>
+           </div>
+           <div class="row" id="choice">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                    <label>Choice of player:</label>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 ">
+                    <label>Choice of Computer:</label>
+                </div>
+            </div>
+            <div class="row" id="choice">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2 " >
+                    <input type="text"  class="playersChoice" id="playersChoice" readonly>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 " >
+                    <input type="text" class="compChoice" id="compChoice" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5"></div>
+                <div class="ComputerValue" id="ComputerValue"></div>
+            </div>
+            <div class="row">
+            <div class="col-sm-5"></div>
+            <div  >
+                <button class="forReset" onclick="forReset()">Restart</button>
+            </div>
+           
+          </div>
+        </div>
+    </body>
+    <script>
+        let playerPoints=0;
+        let compPoints=0;
+        let randomValue=["Rock","Paper","Scissor"];
+        forReset();
+        function forReset(){
+            playerPoints=0;
+            compPoints=0;
+            document.getElementById("playerpt").value="";
+            document.getElementById("computerpt").value="";
+            document.getElementById("ComputerValue").innerHTML='';
+            document.getElementById("playersChoice").value="";
+            document.getElementById("compChoice").value="";
+        }
+        
+        function myFunction(e){
+           var myId = e.target.id;
+        let sysVal=randomValue[Math.floor(Math.random() * randomValue.length)];
+        let playerValue=e.target.innerHTML;
+        //console.log(playerValue);
+        //console.log(sysVal);
+        document.getElementById("playersChoice").value=playerValue;
+        document.getElementById("compChoice").value=sysVal;
+        let result=verify(playerValue,sysVal);
+        showWin_Draw(result);
+        finalresult();
+        
+        }
+        function showWin_Draw(result){
+            if(result==0){
+             document.getElementById("ComputerValue").innerHTML='Draw';
+            }
+            else if(result==1){
+             document.getElementById("ComputerValue").innerHTML='Player scored 1 point';
+             playerPoints+=1;
+             document.getElementById("playerpt").value=playerPoints;
+            }
+            else{
+             document.getElementById("ComputerValue").innerHTML='Computer scored 1 point';
+             compPoints+=1;
+              document.getElementById("computerpt").value=compPoints;
+            }
+            }
+        function finalresult(){
+            if(compPoints>9){
+               alert("GAME ENDED \n Computer Won");
+              forReset();
+            
+            }
+            else if(playerPoints>9){
+                  alert("GAME ENDED \n Player Won");
+                  forReset();
+            }
+        }
+       
+        //if return=0draw; 1 player wins; 2 comp wins
+        function verify(playerValue,sysVal){
+            if(playerValue==sysVal){
+                return 0;
+            }
+           else if(playerValue=="Rock" && sysVal=="Paper"){
+                return 2;
+            }
+            else if(playerValue=="Paper" && sysVal=="Scissor"){
+                return 2;
+            }
+            else if(playerValue=="Scissor" && sysVal=="Rock"){
+                return 2;
+            }
+            else{
+                return 1;
+            }
+        }
+         
+    </script>
+</html>
