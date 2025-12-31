@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="2048simp.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<title>2048</title>
+      <body style="background-color: rgb(174, 230, 230);">
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-1">
+            <h1 style="margin-left: 17px;
+color: rgb(55, 29, 202)">2048</h1>
+        </div>
+        </div>
+        <div class="row btns">
+            <div class="col-sm-4"></div>
+            <div class="box col-sm-1 colourbtn1" id="btn1"></div>
+            <div class="box col-sm-1 colourbtn2" id="btn2"></div>
+            <div class="box col-sm-1 colourbtn3" id="btn3"></div>
+            <div class="box col-sm-1 colourbtn4" id="btn4"></div>
+        </div>
+         <div class="row btns">
+             <div class="col-sm-4"></div>
+            <div class="box col-sm-1 colourbtn5" id="btn5"></div>
+            <div class="box col-sm-1 colourbtn6" id="btn6"></div>
+            <div class="box col-sm-1 colourbtn7" id="btn7"></div>
+            <div class="box col-sm-1 colourbtn8" id="btn8"></div>
+        </div>
+         <div class="row btns">
+             <div class="col-sm-4"></div>
+            <div class="box col-sm-1 colourbtn9" id="btn9"></div>
+            <div class="box col-sm-1 colourbtn10" id="btn10"></div>
+            <div class="box col-sm-1 colourbtn11" id="btn11"></div>
+            <div class="box col-sm-1 colourbtn12" id="btn12"></div>
+        </div>
+        <div class="row btns">
+             <div class="col-sm-4"></div>
+            <div class="box col-sm-1 colourbtn13" id="btn13"></div>
+            <div class="box col-sm-1 colourbtn14" id="btn14"></div>
+            <div class="box col-sm-1 colourbtn15" id="btn15"></div>
+            <div class="box col-sm-1 colourbtn16" id="btn16"></div>
+        </div>
+        
+         <div class="row">
+            <div class="row">
+                <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+            <button id="moveUp" class="dirBtns" onclick="upButton(),upCompare(),randomNumgeneration(),colour()" >&#9650</button>
+            <button id="moveDown" class="dirBtns" onclick="downButton(),downCompare(),randomNumgeneration(),colour()" > &#9660</button>
+            <button id="moveRight" class="dirBtns" onclick="rightButton(),rightCompare(),randomNumgeneration(),colour()">&#9654</button>
+            <button id="moveLeft" class="dirBtns" onclick=" leftButton(),leftCompare(),randomNumgeneration(),colour()">&#9664</button>
+          
+            </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+        <button id="start" onclick="startGame(),colour()" >Start</button>
+            </div>
+    </div>
+    </body>
+    <script>
+          const stringList = ["btn1", "btn2","btn3","btn4",
+                             "btn5","btn6","btn7","btn8",
+                              "btn9","btn10","btn11","btn12",
+                                "btn13","btn14","btn15","btn16"];
+          const numList = ["2","4"];
+            //leftButton(),leftCompare(),
+            // rowFormatter('btn1', 'btn2', 'btn3', 'btn4');
+            
+        function leftButton(){   
+         lebtn(0,4,1);
+         lebtn(0,8,5);
+         lebtn(0,12,9);
+         lebtn(0,16,13);
+      }
+     
+       function lebtn(count,z,k){                                
+            for(i=z;i>k;i--){     
+                if(document.getElementById("btn"+i).innerHTML!=""){
+                    if(document.getElementById("btn"+(i-1)) && document.getElementById("btn"+(i-1)).innerHTML==""){
+                    document.getElementById("btn"+(i-1)).innerHTML=document.getElementById("btn"+i).innerHTML;
+                    document.getElementById("btn"+i).innerHTML="";
+                    }
+                } 
+            }
+             if(count<=3){
+                count+=1;
+                console.log("count= "+count);
+                lebtn(count,z,k);
+             }
+            }
+             function leftCompare(){
+            ltcompare(1,4);
+            ltcompare(5,8);
+            ltcompare(9,12);
+            ltcompare(13,16);
+        }
+         function ltcompare(u,f){
+                for(i=u;i<f;i++){    
+                        if(document.getElementById("btn"+(i+1)).innerHTML==document.getElementById("btn"+i).innerHTML 
+                            && document.getElementById("btn"+(i+1)).innerHTML!=""){            
+                        let x=document.getElementById("btn"+i).innerHTML;
+                            document.getElementById("btn"+(i)).innerHTML=x*2;
+                            document.getElementById("btn"+(i+1)).innerHTML="";
+                            i!=i
+                        }                                        
+            }  
+            leftButton();
+  
+             }
+              function rightButton(){   
+         rtbtn(0,1,4);
+         rtbtn(0,5,8);
+         rtbtn(0,9,12);
+         rtbtn(0,13,16);
+      }
+            function rtbtn(count,u,f){                                
+            for(i=u;i<f;i++){     
+               
+                    if(document.getElementById("btn"+(i))!="" && document.getElementById("btn"+(i+1)).innerHTML==""){
+                    document.getElementById("btn"+(i+1)).innerHTML=document.getElementById("btn"+i).innerHTML;
+                    document.getElementById("btn"+i).innerHTML="";
+                    }
+                
+            }
+             
+             if(count<=3){
+                count+=1;
+                console.log("count= "+count);
+                lebtn(count,u,i);
+             }
+            }
+          function rightCompare(){
+            rtcompare(1,4);
+            rtcompare(5,8);
+            rtcompare(9,12);
+            rtcompare(13,16);
+        }
+     
+             function rtcompare(u,i){
+                
+                for(i;i>u;i--){    
+                          let comp=document.getElementById("btn"+i).innerHTML;
+                        if( (document.getElementById("btn"+(i-1)).innerHTML==comp)  && document.getElementById("btn"+(i-1)).innerHTML!=""){            
+                        let x=document.getElementById("btn"+i).innerHTML;
+                            document.getElementById("btn"+(i)).innerHTML=x*2;
+                            document.getElementById("btn"+(i-1)).innerHTML="";
+                            i!=i
+                        }                                        
+            }  
+        rightButton();
+             }
+
+              function upButton(){   
+         upbtn(0,13);
+         upbtn(0,14);
+         upbtn(0,15);
+         upbtn(0,16);
+      }
+         function upbtn(count,k){                                
+            for(z=0;z<4;z++){     
+             let i=k-z*4;
+                if(document.getElementById("btn"+i) && document.getElementById("btn"+i).innerHTML!=""){
+                    if(document.getElementById("btn"+(i-4)) && document.getElementById("btn"+(i-4)).innerHTML==""){
+                    document.getElementById("btn"+(i-4)).innerHTML=document.getElementById("btn"+i).innerHTML;
+                    document.getElementById("btn"+i).innerHTML="";
+                    }
+                } 
+            }
+             if(count<=3){
+                count+=1;
+                console.log("count= "+count);
+                upbtn(count,k);
+             }
+            }
+             function upCompare(){
+            ucompare(1);
+            ucompare(2);
+            ucompare(3);
+            ucompare(4);
+        }
+         function ucompare(k){
+                for(z=0;z<=3;z++){ 
+                   let i=k+4*z  ; 
+                   if(document.getElementById("btn"+(i+4)) && document.getElementById("btn"+(i+4)).innerHTML!="")
+                        if(document.getElementById("btn"+(i+4)).innerHTML==document.getElementById("btn"+i).innerHTML ){            
+                        let x=document.getElementById("btn"+i).innerHTML;
+                            document.getElementById("btn"+(i)).innerHTML=x*2;
+                            document.getElementById("btn"+(i+4)).innerHTML="";
+                            i!=i
+                        }                                        
+            }  
+            upButton();
+  
+             }
+      
+                 function downButton(){   
+         downbtn(0,1);
+         downbtn(0,2);
+         downbtn(0,3);
+         downbtn(0,4);
+      }
+         function downbtn(count,k){                                
+            for(z=0;z<4;z++){     
+             let i=k+z*4;
+                if(document.getElementById("btn"+i) && document.getElementById("btn"+i).innerHTML!=""){
+                    if(document.getElementById("btn"+(i+4)) && document.getElementById("btn"+(i+4)).innerHTML==""){
+                    document.getElementById("btn"+(i+4)).innerHTML=document.getElementById("btn"+i).innerHTML;
+                    document.getElementById("btn"+i).innerHTML="";
+                    }
+                } 
+            }
+             if(count<=3){
+                count+=1;
+                console.log("count= "+count);
+                downbtn(count,k);
+             }
+            }
+             function downCompare(){
+            dcompare(13);
+            dcompare(14);
+            dcompare(15);
+            dcompare(16);
+        }
+         function dcompare(k){
+                for(z=0;z<=3;z++){ 
+                   let i=k-4*z  ; 
+                   if(document.getElementById("btn"+(i-4)) && document.getElementById("btn"+(i-4)).innerHTML!="")
+                        if(document.getElementById("btn"+(i-4)).innerHTML==document.getElementById("btn"+i).innerHTML ){            
+                        let x=document.getElementById("btn"+i).innerHTML;
+                            document.getElementById("btn"+(i)).innerHTML=x*2;
+                            document.getElementById("btn"+(i-4)).innerHTML="";
+                            i!=i
+                        }                                        
+            }  
+            downButton();
+  
+             }
+      
+       
+function randomNumgeneration(){
+    let emptyBox=[];
+   
+    for(let i=1;i<=stringList.length;i++){
+        
+        if(document.getElementById("btn"+i).innerHTML==""){ 
+        emptyBox.push("btn"+i);}
+    }
+     console.log(emptyBox);
+
+const intrandomString = emptyBox[Math.floor(Math.random() * emptyBox.length)];
+const randomNum = numList[Math.floor(Math.random() * numList.length)];
+document.getElementById(intrandomString).innerHTML=randomNum;
+}
+      
+        function startGame(){
+const randomString = stringList[ Math.floor(Math.random() * stringList.length)];
+const randomNum = numList[Math.floor(Math.random() * numList.length)];
+let  removedString = stringList.indexOf(randomString);
+stringList.splice(removedString, 1);
+const newrandomString = stringList[Math.floor(Math.random() * stringList.length)];
+const newrandomNum = numList[Math.floor(Math.random() * numList.length)];
+document.getElementById(newrandomString).innerHTML=newrandomNum;
+document.getElementById(randomString).innerHTML=randomNum;
+const button = document.getElementById('start');
+button.disabled = true;
+        }
+        function colour(){
+             let val1=document.getElementById("btn1").innerHTML;
+        let val2=document.getElementById("btn2").innerHTML;
+        let val3=document.getElementById("btn3").innerHTML;
+        let val4=document.getElementById("btn4").innerHTML;
+        let val5=document.getElementById("btn5").innerHTML;
+        let val6=document.getElementById("btn6").innerHTML;
+        let val7=document.getElementById("btn7").innerHTML;
+        let val8=document.getElementById("btn8").innerHTML;
+        let val9=document.getElementById("btn9").innerHTML;
+        let val10=document.getElementById("btn10").innerHTML;
+        let val11=document.getElementById("btn11").innerHTML;
+        let val12=document.getElementById("btn12").innerHTML;
+        let val13=document.getElementById("btn13").innerHTML;
+        let val14=document.getElementById("btn14").innerHTML;
+        let val15=document.getElementById("btn15").innerHTML;
+        let val16=document.getElementById("btn16").innerHTML;
+            const myButton = document.getElementById("colour");
+            for(i=1;i<=16;i++){              
+                if(document.getElementById("btn"+i).innerHTML==2){
+            
+             document.getElementById("colourbtn1").style.backgroundColor = "black";
+            document.getElementById("colourbtn1").style.color = "black";}
+            else if(("val"+i)==4){
+            myButton.style.opacity = "0.1";
+            myButton.style.color = "black";}
+           else if("val"+i==8){
+            myButton.style.opacity = "0.2";
+            myButton.style.color = "black";}
+            else if("val"+i==16){
+            myButton.style.opacity = "0.3";
+            myButton.style.color = "black";}
+            else if("val"+i==32){
+            myButton.style.opacity = "0.4";
+            myButton.style.color = "black";}
+            else if("val"+i==64){
+            myButton.style.opacity = "0.5";
+            myButton.style.color = "black";}
+            else if("val"+i==128){
+            myButton.style.opacity = "0.6";
+            myButton.style.color = "black";}           
+            else if("val"+i==256){
+            myButton.style.opacity = "0.7";
+            myButton.style.color = "black";}
+            else if("val"+i==512){
+            myButton.style.opacity = "0.8";
+            myButton.style.color = "black";}
+            else if("val"+i==1024){
+            myButton.style.opacity = "0.9";
+            myButton.style.color = "black";}
+            else if("val"+i==2048){
+            myButton.style.opacity = "1";
+            myButton.style.color = "black";}
+            
+            }
+        }
+    </script>
+</html>

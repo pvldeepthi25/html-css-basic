@@ -1,0 +1,36 @@
+.box{
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+}
+@import url('fonts.googleapis.com');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.btns{
+  margin-left:600px
+}
+.dirBtns{
+ width: 30px;
+ height: 30px;
+  text-align: center;
+  color: white;
+  background-color: rgb(55, 29, 202);
+  margin-top: 20px;
+}
+.dirBtns:hover{
+  color:  rgb(55, 29, 202);
+    background-color: white;
+}
+#start{
+  margin-top: 20px;
+ margin-left: 40px;
+ color:  rgb(55, 29, 202);
+    background-color: white;
+}
+#start:hover{
+color: white;
+  background-color: rgb(55, 29, 202);
+}
